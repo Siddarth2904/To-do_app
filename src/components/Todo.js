@@ -7,6 +7,27 @@ import Modal from 'react-bootstrap/Modal'
 import { Button } from '@mui/material';
 import { Remove, Update } from '../redux/actions/action';
 import { DeleteContext } from './context/ContextProvider';
+
+const responsive = {
+  superLargeDesktop: {
+    // the naming can be any, depends on you.
+    breakpoint: { max: 4000, min: 3000 },
+    items: 5
+  },
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 3
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1
+  }
+};
+
 const Todo = () => {
 
   const { User_data } = useSelector((state) => state.todoreducers)
@@ -48,12 +69,12 @@ const Todo = () => {
 
   return (
     <>
-      <div className='todo_data col-lg-5 mx-auto mt-2'>
+      <div className='todo_data col-lg-5 mx-auto mt-2' responsive={responsive}>
         {
           User_data.map((ele, k) => {
             return (
               <>
-                <div className='todo_container mb-2 d-flex justify-content-between align-items-center px-2' key={k} style={{ background: '#dcdde1', borderRadius: '3px', height: '45px', width: '457px' }}>
+                <div className='todo_container mb-2 d-flex justify-content-between align-items-center px-2' key={k} style={{ background: '#dcdde1', borderRadius: '3px', height: '45px' }}>
                   <li style={{ listStyle: 'none' }}>{ele}</li>
                   <div className='edit_dlt col-lg-3 py-2 d-flex justify-content-between align-items-center'>
                     <EditIcon
